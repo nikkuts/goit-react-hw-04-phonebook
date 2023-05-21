@@ -3,11 +3,10 @@ import { nanoid } from 'nanoid';
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import Filter from "./Filter/Filter";
+import useLocalStorage from "hooks/useLocalStorage";
 
 export default function App () {
-    const [contacts, setContacts] = useState(() => {
-      return JSON.parse(localStorage.getItem('contacts')) ?? [];
-    });
+    const [contacts, setContacts] = useLocalStorage('contacts', []);
     const [filter, setFilter] = useState('');
 
     const addContact = (name, number) => {
